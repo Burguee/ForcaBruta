@@ -1,9 +1,9 @@
 import time
 
-def forcaBruta(a: int, b: int) -> int:
-    # Exponenciação por força bruta: multiplica 'a' por ele mesmo 'b' vezes.
+def forcaBruta(a: int, n: int) -> int:
+    # Exponenciação por força bruta: multiplica 'a' por ele mesmo 'n' vezes.
     resultado = 1
-    for _ in range(b):
+    for _ in range(n):
         resultado *= a
     return resultado
 
@@ -17,7 +17,7 @@ def medirTempo(func, *args):
 def main():
     base = 2
     expoente = 1
-    arquivo = "resultados.txt"
+    arquivo = "resultado.txt"
 
     print("Análise Empírica — Exponenciação por Força Bruta (base 2, expoente dobrando)")
     print("Pressione CTRL+C para parar.\n")
@@ -29,8 +29,8 @@ def main():
         try:
             while True:
                 tempo = medirTempo(forcaBruta, base, expoente)
-                arq.write(f"{expoente}\t{tempo:.6f}\n")
-                print(f"Expoente: {expoente:<10} → Tempo: {tempo:.6f} ms")
+                arq.write(f"{expoente}\t{tempo:.2f}\n")
+                print(f"Expoente: {expoente:<10} → Tempo: {tempo:.2f} ms")
                 arq.flush()
                 expoente *= 2  # dobra o expoente
         except KeyboardInterrupt:
